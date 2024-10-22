@@ -199,9 +199,23 @@ self.addEventListener('install', (event) => {
               '/addCRK0/',
               '/addFLT0/',
               '/addPKG0/',
+              '/viewIH0/',
               '/view_Mace_Purchase/',
+              '/view_Mace_Dispatched/',
+              '/view_Mace_Dispatched_Rec/',
+              '/view_Final_Weigtht_Inspection/',
+              '/view_Vehicle_Inspection/',
+              '/viewDISD0/',
+              '/view_Dispatch_Of_Dried_Nutmeg_Rec/',
+              '/viewDISG0/',
+              '/view_Dispatch_Of_Green_Nutmeg_Rec/',
+              '/viewCRK0/',
+              '/viewFLT0/',
+              '/viewPKG0/',
 
 
+
+              
               
                 // '/Signin/',
                 // '/adhome',
