@@ -196,10 +196,10 @@ self.addEventListener('install', (event) => {
                ' /add_Mace_Dispatched_Rec/',
                 '/add_Final_Weigtht_Inspection/',
                 '/add_Vehicle_Inspection/',
-                '/view_Mace_Purchase/',
-                '/view_Mace_Dispatched/',
-                '/view_Mace_Dispatched_Rec/',
-                '/view_Final_Weigtht_Inspection/',
+                // '/view_Mace_Purchase/',
+                // '/view_Mace_Dispatched/',
+                // '/view_Mace_Dispatched_Rec/',
+                // '/view_Final_Weigtht_Inspection/',
 
 
 
@@ -244,19 +244,19 @@ self.addEventListener('install', (event) => {
                 '/table2/',  
                 
                 
-                '/view0DA/',
-                '/view0DB/',
-                '/view0FA/',
-                '/view0FB/',
-                '/view0QC/',
+                // '/view0DA/',
+                // '/view0DB/',
+                // '/view0FA/',
+                // '/view0FB/',
+                // '/view0QC/',
 
 
-                '/viewIH0/',
-                '/viewDISD0/',
-                '/viewDISG0/',
-                '/viewCRK0/',
-                '/viewFLT0/',
-                '/viewPKG0/',
+                // '/viewIH0/',
+                // '/viewDISD0/',
+                // '/viewDISG0/',
+                // '/viewCRK0/',
+                // '/viewFLT0/',
+                // '/viewPKG0/',
                  // ...
             ]).then(() => {
                 // Once all resources are cached, post a message to all clients
