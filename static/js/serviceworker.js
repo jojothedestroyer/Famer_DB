@@ -184,13 +184,14 @@ self.addEventListener('install', (event) => {
                 // Add URLs to assets you want to cache
                 // ...
                 '/',
-                '/adhome',
-                '/addIH0/',
-                '/addDISD0/',
-                '/addDISG0/',
-                '/addCRK0/',
-                '/addFLT0/',
-                '/addPKG0/',
+                // '/Signin/',
+                // '/adhome',
+                // '/addIH0/',
+                // '/addDISD0/',
+                // '/addDISG0/',
+                // '/addCRK0/',
+                // '/addFLT0/',
+                // '/addPKG0/',
                 '/add_Mace_Purchase/',
                 '/add_Mace_Dispatched/',
                ' /add_Mace_Dispatched_Rec/',
@@ -204,17 +205,17 @@ self.addEventListener('install', (event) => {
 
 
 
-                '/login/',
-                '/login1/',
-                '/table/',
-                '/table001/',
-                '/add_to_session/',
-                '/DriedA',
-                '/DriedB',
-                '/FloatA',
-                '/FloatB',
-                '/Quality',
-                '/Signin/',
+                // '/login/',
+                // '/login1/',
+                // '/table/',
+                // '/table001/',
+                // '/add_to_session/',
+                // '/DriedA',
+                // '/DriedB',
+                // '/FloatA',
+                // '/FloatB',
+                // '/Quality',
+                // '/Signin/',
 
 
                 
@@ -226,7 +227,7 @@ self.addEventListener('install', (event) => {
                 '/api/Quaility/',
 
 
-                '/api/visit/',
+                // '/api/visit/',
                 '/api/In-House-Drying/',
                 '/api/Dispatch-Of-Dried-Nutmeg/',
                 '/api/Dispatch-Of-Green/',
@@ -240,8 +241,8 @@ self.addEventListener('install', (event) => {
 
 
 
-                '/table1/',      
-                '/table2/',  
+                // '/table1/',      
+                // '/table2/',  
                 
                 
                 // '/view0DA/',
