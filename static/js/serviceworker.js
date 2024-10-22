@@ -184,6 +184,25 @@ self.addEventListener('install', (event) => {
                 // Add URLs to assets you want to cache
                 // ...
                 '/',
+              '/Signin/',
+              '/table001/',
+              '/addIH0/',
+              '/add_Mace_Purchase/',
+              '/add_Mace_Dispatched/',
+              '/add_Mace_Dispatched_Rec/',
+              '/add_Final_Weigtht_Inspection/',
+              '/add_Vehicle_Inspection/',
+              '/addDISD0/',
+              '/add_Dispatch_Of_Dried_Nutmeg_Rec/',
+              '/addDISG0/',
+              '/add_Dispatch_Of_Green_Nutmeg_Rec/',
+              '/addCRK0/',
+              '/addFLT0/',
+              '/addPKG0/',
+              '/view_Mace_Purchase/',
+
+
+              
                 // '/Signin/',
                 // '/adhome',
                 // '/addIH0/',
@@ -192,11 +211,6 @@ self.addEventListener('install', (event) => {
                 // '/addCRK0/',
                 // '/addFLT0/',
                 // '/addPKG0/',
-                '/add_Mace_Purchase/',
-                '/add_Mace_Dispatched/',
-               ' /add_Mace_Dispatched_Rec/',
-                '/add_Final_Weigtht_Inspection/',
-                '/add_Vehicle_Inspection/',
                 // '/view_Mace_Purchase/',
                 // '/view_Mace_Dispatched/',
                 // '/view_Mace_Dispatched_Rec/',
