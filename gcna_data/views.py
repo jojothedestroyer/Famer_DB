@@ -167,7 +167,7 @@ from .serializers import Cracking_Extraction_Summary_Serializer
 from rest_framework import generics
 from django.shortcuts import get_object_or_404, redirect, render
 from django.views.generic import TemplateView
-from chartjs.views.lines import BaseLineChartView
+# from chartjs.views.lines import BaseLineChartView
 from django.http import JsonResponse
 from rest_framework.views import APIView
 from rest_framework.response import Response
