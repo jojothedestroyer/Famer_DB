@@ -717,3 +717,74 @@
 //         })
 //     );
 // });
+
+
+
+
+
+self.addEventListener('install', (event) => {
+    event.waitUntil(
+        caches.open('gcna-offline-access').then((cache) => {
+            return cache.addAll([
+                '/',
+                '/Signin/',
+                '/table001/',
+                '/addIH0/',
+                '/add_Mace_Purchase/',
+                '/add_Mace_Dispatched/',
+                '/add_Mace_Dispatched_Rec/',
+                '/add_Final_Weigtht_Inspection/',
+                '/add_Vehicle_Inspection/',
+                '/addDISD0/',
+                '/add_Dispatch_Of_Dried_Nutmeg_Rec/',
+                '/addDISG0/',
+                '/add_Dispatch_Of_Green_Nutmeg_Rec/',
+                '/addCRK0/',
+                '/addFLT0/',
+                '/addPKG0/',
+                '/viewIH0/',
+                '/view_Mace_Purchase/',
+                '/view_Mace_Dispatched/',
+                '/view_Mace_Dispatched_Rec/',
+                '/view_Final_Weigtht_Inspection/',
+                '/view_Vehicle_Inspection/',
+                '/viewDISD0/',
+                '/view_Dispatch_Of_Dried_Nutmeg_Rec/',
+                '/viewDISG0/',
+                '/view_Dispatch_Of_Green_Nutmeg_Rec/',
+                '/viewCRK0/',
+                '/viewFLT0/',
+                '/viewPKG0/',
+                '/api/DriedA/',
+                '/api/DriedB/',
+                '/api/FloatA/',
+                '/api/FloatB/',
+                '/api/Farmer/',
+                '/api/Quaility/',
+                '/api/In-House-Drying/',
+                '/api/Dispatch-Of-Dried-Nutmeg/',
+                '/api/Dispatch-Of-Green/',
+                '/api/Cracking-Summary/',
+                '/api/Floation-Summary/',
+                '/api/Package-Ciontrol/',
+                '/api/Editors/',
+                '/api/Labour-support/',
+                '/api/Training-support/',
+                '/api/Policy/'
+            ]).then(() => {
+                // Notify all clients that caching is complete
+                self.clients.matchAll().then(clients => {
+                    clients.forEach(client => client.postMessage('Caching complete!'));
+                });
+            });
+        })
+    );
+});
+
+self.addEventListener('fetch', (event) => {
+    event.respondWith(
+        fetch(event.request).catch(() => {
+            return caches.match(event.request);
+        })
+    );
+});
