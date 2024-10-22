@@ -177,85 +177,183 @@
 
 
 
+// self.addEventListener('install', (event) => {
+//     event.waitUntil(
+//         caches.open('gcna-offline-access').then((cache) => {
+//             return cache.addAll([
+//                 // Add URLs to assets you want to cache
+//                 // ...
+//                 '/',
+//               '/Signin/',
+//               '/table001/',
+//               '/addIH0/',
+//               '/add_Mace_Purchase/',
+//               '/add_Mace_Dispatched/',
+//               '/add_Mace_Dispatched_Rec/',
+//               '/add_Final_Weigtht_Inspection/',
+//               '/add_Vehicle_Inspection/',
+//               '/addDISD0/',
+//               '/add_Dispatch_Of_Dried_Nutmeg_Rec/',
+//               '/addDISG0/',
+//               '/add_Dispatch_Of_Green_Nutmeg_Rec/',
+//               '/addCRK0/',
+//               '/addFLT0/',
+//               '/addPKG0/',
+//               '/viewIH0/',
+//               '/view_Mace_Purchase/',
+//               '/view_Mace_Dispatched/',
+//               '/view_Mace_Dispatched_Rec/',
+//               '/view_Final_Weigtht_Inspection/',
+//               '/view_Vehicle_Inspection/',
+//               '/viewDISD0/',
+//               '/view_Dispatch_Of_Dried_Nutmeg_Rec/',
+//               '/viewDISG0/',
+//               '/view_Dispatch_Of_Green_Nutmeg_Rec/',
+//               '/viewCRK0/',
+//               '/viewFLT0/',
+//               '/viewPKG0/',
+
+
+
+              
+              
+//                 // '/Signin/',
+//                 // '/adhome',
+//                 // '/addIH0/',
+//                 // '/addDISD0/',
+//                 // '/addDISG0/',
+//                 // '/addCRK0/',
+//                 // '/addFLT0/',
+//                 // '/addPKG0/',
+//                 // '/view_Mace_Purchase/',
+//                 // '/view_Mace_Dispatched/',
+//                 // '/view_Mace_Dispatched_Rec/',
+//                 // '/view_Final_Weigtht_Inspection/',
+
+
+
+
+//                 // '/login/',
+//                 // '/login1/',
+//                 // '/table/',
+//                 // '/table001/',
+//                 // '/add_to_session/',
+//                 // '/DriedA',
+//                 // '/DriedB',
+//                 // '/FloatA',
+//                 // '/FloatB',
+//                 // '/Quality',
+//                 // '/Signin/',
+
+
+                
+//                 '/api/DriedA/',
+//                 '/api/DriedB/',
+//                 '/api/FloatA/',
+//                 '/api/FloatB/',
+//                 '/api/Farmer/',
+//                 '/api/Quaility/',
+
+
+//                 // '/api/visit/',
+//                 '/api/In-House-Drying/',
+//                 '/api/Dispatch-Of-Dried-Nutmeg/',
+//                 '/api/Dispatch-Of-Green/',
+//                 '/api/Cracking-Summary/',
+//                 '/api/Floation-Summary/',
+//                 '/api/Package-Ciontrol/',
+//                 '/api/Editors/',
+//                 '/api/Labour-support/',
+//                 '/api/Training-support/',
+//                 '/api/Policy/',
+
+
+
+//                 // '/table1/',      
+//                 // '/table2/',  
+                
+                
+//                 // '/view0DA/',
+//                 // '/view0DB/',
+//                 // '/view0FA/',
+//                 // '/view0FB/',
+//                 // '/view0QC/',
+
+
+//                 // '/viewIH0/',
+//                 // '/viewDISD0/',
+//                 // '/viewDISG0/',
+//                 // '/viewCRK0/',
+//                 // '/viewFLT0/',
+//                 // '/viewPKG0/',
+//                  // ...
+//             ]).then(() => {
+//                 // Once all resources are cached, post a message to all clients
+//                 self.clients.matchAll().then(clients => {
+//                     clients.forEach(client => client.postMessage('Caching complete!'));
+//                 });
+//             });
+//         })
+//     );
+// });
+
+// self.addEventListener('fetch', (event) => {
+//     event.respondWith(
+//         // Try to fetch from the network first
+//         fetch(event.request).catch(() => {
+//             // If the fetch fails (e.g., due to no network), try to get it from the cache
+//             return caches.match(event.request);
+//         })
+//     );
+// });
+
+
+
+
+
+
+
+
+
 self.addEventListener('install', (event) => {
     event.waitUntil(
         caches.open('gcna-offline-access').then((cache) => {
             return cache.addAll([
-                // Add URLs to assets you want to cache
-                // ...
                 '/',
-              '/Signin/',
-              '/table001/',
-              '/addIH0/',
-              '/add_Mace_Purchase/',
-              '/add_Mace_Dispatched/',
-              '/add_Mace_Dispatched_Rec/',
-              '/add_Final_Weigtht_Inspection/',
-              '/add_Vehicle_Inspection/',
-              '/addDISD0/',
-              '/add_Dispatch_Of_Dried_Nutmeg_Rec/',
-              '/addDISG0/',
-              '/add_Dispatch_Of_Green_Nutmeg_Rec/',
-              '/addCRK0/',
-              '/addFLT0/',
-              '/addPKG0/',
-              '/viewIH0/',
-              '/view_Mace_Purchase/',
-              '/view_Mace_Dispatched/',
-              '/view_Mace_Dispatched_Rec/',
-              '/view_Final_Weigtht_Inspection/',
-              '/view_Vehicle_Inspection/',
-              '/viewDISD0/',
-              '/view_Dispatch_Of_Dried_Nutmeg_Rec/',
-              '/viewDISG0/',
-              '/view_Dispatch_Of_Green_Nutmeg_Rec/',
-              '/viewCRK0/',
-              '/viewFLT0/',
-              '/viewPKG0/',
-
-
-
-              
-              
-                // '/Signin/',
-                // '/adhome',
-                // '/addIH0/',
-                // '/addDISD0/',
-                // '/addDISG0/',
-                // '/addCRK0/',
-                // '/addFLT0/',
-                // '/addPKG0/',
-                // '/view_Mace_Purchase/',
-                // '/view_Mace_Dispatched/',
-                // '/view_Mace_Dispatched_Rec/',
-                // '/view_Final_Weigtht_Inspection/',
-
-
-
-
-                // '/login/',
-                // '/login1/',
-                // '/table/',
-                // '/table001/',
-                // '/add_to_session/',
-                // '/DriedA',
-                // '/DriedB',
-                // '/FloatA',
-                // '/FloatB',
-                // '/Quality',
-                // '/Signin/',
-
-
-                
+                '/Signin/',
+                '/table001/',
+                '/addIH0/',
+                '/add_Mace_Purchase/',
+                '/add_Mace_Dispatched/',
+                '/add_Mace_Dispatched_Rec/',
+                '/add_Final_Weigtht_Inspection/',
+                '/add_Vehicle_Inspection/',
+                '/addDISD0/',
+                '/add_Dispatch_Of_Dried_Nutmeg_Rec/',
+                '/addDISG0/',
+                '/add_Dispatch_Of_Green_Nutmeg_Rec/',
+                '/addCRK0/',
+                '/addFLT0/',
+                '/addPKG0/',
+                '/viewIH0/',
+                '/view_Mace_Purchase/',
+                '/view_Mace_Dispatched/',
+                '/view_Mace_Dispatched_Rec/',
+                '/view_Final_Weigtht_Inspection/',
+                '/view_Vehicle_Inspection/',
+                '/viewDISD0/',
+                '/view_Dispatch_Of_Dried_Nutmeg_Rec/',
+                '/viewDISG0/',
+                '/view_Dispatch_Of_Green_Nutmeg_Rec/',
+                '/viewCRK0/',
+                '/viewFLT0/',
+                '/viewPKG0/',
                 '/api/DriedA/',
                 '/api/DriedB/',
                 '/api/FloatA/',
                 '/api/FloatB/',
                 '/api/Farmer/',
                 '/api/Quaility/',
-
-
-                // '/api/visit/',
                 '/api/In-House-Drying/',
                 '/api/Dispatch-Of-Dried-Nutmeg/',
                 '/api/Dispatch-Of-Green/',
@@ -265,30 +363,8 @@ self.addEventListener('install', (event) => {
                 '/api/Editors/',
                 '/api/Labour-support/',
                 '/api/Training-support/',
-                '/api/Policy/',
-
-
-
-                // '/table1/',      
-                // '/table2/',  
-                
-                
-                // '/view0DA/',
-                // '/view0DB/',
-                // '/view0FA/',
-                // '/view0FB/',
-                // '/view0QC/',
-
-
-                // '/viewIH0/',
-                // '/viewDISD0/',
-                // '/viewDISG0/',
-                // '/viewCRK0/',
-                // '/viewFLT0/',
-                // '/viewPKG0/',
-                 // ...
+                '/api/Policy/'
             ]).then(() => {
-                // Once all resources are cached, post a message to all clients
                 self.clients.matchAll().then(clients => {
                     clients.forEach(client => client.postMessage('Caching complete!'));
                 });
@@ -298,14 +374,60 @@ self.addEventListener('install', (event) => {
 });
 
 self.addEventListener('fetch', (event) => {
+    const requestURL = new URL(event.request.url);
+    
+    // Check if it's the home page
+    if (requestURL.href === 'https://gcnafarmerform-production.up.railway.app/') {
+        // Run the provided JavaScript for the home page
+        event.waitUntil(
+            self.clients.matchAll().then(clients => {
+                clients.forEach(client => {
+                    client.postMessage({ action: 'run-indexedDB-code' });
+                });
+            })
+        );
+    }
+
     event.respondWith(
-        // Try to fetch from the network first
-        fetch(event.request).catch(() => {
-            // If the fetch fails (e.g., due to no network), try to get it from the cache
-            return caches.match(event.request);
+        caches.match(event.request).then(cachedResponse => {
+            return fetch(event.request).then(networkResponse => {
+                if (!networkResponse || networkResponse.status !== 200 || networkResponse.type !== 'basic') {
+                    return cachedResponse || networkResponse;
+                }
+
+                // If response is different from the cached version, update the cache
+                if (cachedResponse) {
+                    const cachedText = cachedResponse.clone().text();
+                    const networkText = networkResponse.clone().text();
+
+                    return Promise.all([cachedText, networkText]).then(([cachedContent, networkContent]) => {
+                        if (cachedContent !== networkContent) {
+                            caches.open('gcna-offline-access').then(cache => {
+                                cache.put(event.request, networkResponse.clone());
+                            });
+                        }
+                        return networkResponse;
+                    });
+                } else {
+                    caches.open('gcna-offline-access').then(cache => {
+                        cache.put(event.request, networkResponse.clone());
+                    });
+                    return networkResponse;
+                }
+            }).catch(() => {
+                return cachedResponse;
+            });
         })
     );
 });
+
+
+
+
+
+
+
+
 
 
 
