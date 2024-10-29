@@ -286,8 +286,142 @@
 
 
 
+        <h1>IndexedDB Tables</h1>
+        <div class="search-container">
+            <input type="text" id="workerNameSearch" placeholder="Search by Worker Name">
+            <input type="text" id="warehouseReceiptSearch" placeholder="Search by Warehouse Receipt">
+            <input type="text" id="batchCodeSearch" placeholder="Search by Batch Code">
+            <button onclick="performSearch()">Search</button>
+        </div>
+        <div id="tables"></div>
+        <script>
+            const modelNames = ['Worker', 'Farmer', 'DriedA', 'DriedB', 'FloatA', 'FloatB', 'Quality', 'Visit', 'In-House-Drying', 'Dispatch-Of-Dried-Nutmeg', 'Dispatch-Of-Green', 'Cracking-Summary', 'Floation-Summary', 'Package-Control', 'Editors', 'Labour-support', 'Training-support', 'Land-info', 'Land-Tenure', 'Nutmeg-Trees', 'Nutmeg-Variety', 'Other-Crops', 'Coconut-Trees', 'Citrus-Mango-Trees', 'Other-Spices-Trees', 'Other-Seasoning-Trees', 'Other-Crops-Cultivated', 'Condition', 'Nutmeg-Land', 'Nutmeg-Frequency', 'Potential-Risks', 'Road-Access', 'Food-Safety-and-Quality', 'Farm-Water-Source', 'Farm-House', 'Inspector-Summary', 'Policy', 'Sanitation-A', 'Sanitation-B', 'Sanitation-C', 'Cracking_Schedule', 'Assorting_Log', 'Extractor_Log', 'Fumigation_Log', 'Shelves', 'W_Shelves', 'M_Shelves', 'W_Shelves_Dried', 'M_Shelves_Dried', 'Vehicle_Inspection', 'Final_Weight_Inspection', 'Final_Weight_Inspection_Fields', 'Dispatch_Of_Dried_Nutmeg_Rec', 'Dispatch_Of_Green_Nutmeg_Rec', 'Mace_Dispatched', 'Mace_Purchase', 'Mace_Dispatched_Rec'];
+        
+            const dbName = 'GCNA';
+        
+            function openIndexedDBConnection(dbName) {
+                return new Promise((resolve, reject) => {
+                    const request = indexedDB.open(dbName, 2);
+        
+                    request.onsuccess = function (event) {
+                        resolve(event.target.result);
+                    };
+        
+                    request.onerror = function (event) {
+                        reject(event.target.error);
+                    };
+                });
+            }
+        
+            function getObjectStoreData(db, storeName) {
+                return new Promise((resolve, reject) => {
+                    const transaction = db.transaction(storeName, 'readonly');
+                    const objectStore = transaction.objectStore(storeName);
+                    const request = objectStore.getAll();
+        
+                    request.onsuccess = function (event) {
+                        resolve(event.target.result);
+                    };
+        
+                    request.onerror = function (event) {
+                        reject(event.target.error);
+                    };
+                });
+            }
+        
+            function displayData(storeName, data) {
+                if (data && data.length > 0) { // Only display if there is data
+                    const tableDiv = document.createElement('div');
+                    tableDiv.innerHTML = `<h2>${storeName}</h2><pre>${JSON.stringify(data, null, 2)}</pre>`;
+                    document.getElementById('tables').appendChild(tableDiv);
+                }
+            }
+        
+            function matchesSearch(entry, workerName, warehouseReceipt, batchCode) {
+                const lowerWorkerName = workerName.toLowerCase();
+                const lowerWarehouseReceipt = warehouseReceipt.toLowerCase();
+                const lowerBatchCode = batchCode.toLowerCase();
+        
+                return (workerName && entry.Worker_ID_Name?.toLowerCase().includes(lowerWorkerName)) ||
+                    (warehouseReceipt && entry.WAREHOUSE_RECEIPT_NUMBER?.toLowerCase().includes(lowerWarehouseReceipt)) ||
+                    (batchCode && (entry.Control_number?.toLowerCase().includes(lowerBatchCode) ||
+                        entry.CONTROL_NUMBER?.toLowerCase().includes(lowerBatchCode) ||
+                        entry.BatchCodes?.some(code => code.toLowerCase().includes(lowerBatchCode))));
+            }
+        
+            async function displayIndexedDBTables(workerName = '', warehouseReceipt = '', batchCode = '') {
+                try {
+                    const db = await openIndexedDBConnection(dbName);
+                    const inHouseDryingData = await getObjectStoreData(db, 'In-House-Drying');
+                    const shelvesData = await getObjectStoreData(db, 'Shelves');
+                    const wShelvesData = await getObjectStoreData(db, 'W_Shelves');
+                    const mShelvesData = await getObjectStoreData(db, 'M_Shelves');
+        
+                    const inHouseDryingMap = inHouseDryingData.reduce((acc, item) => {
+                        acc[item.entryCheck] = { ...item, shelves: [], wShelves: [], mShelves: [] };
+                        return acc;
+                    }, {});
+        
+                    shelvesData.forEach(shelf => {
+                        if (inHouseDryingMap[shelf.entry]) {
+                            inHouseDryingMap[shelf.entry].shelves.push(shelf);
+                        }
+                    });
+        
+                    wShelvesData.forEach(shelf => {
+                        if (inHouseDryingMap[shelf.entry]) {
+                            inHouseDryingMap[shelf.entry].wShelves.push(shelf);
+                        }
+                    });
+        
+                    mShelvesData.forEach(shelf => {
+                        if (inHouseDryingMap[shelf.entry]) {
+                            inHouseDryingMap[shelf.entry].mShelves.push(shelf);
+                        }
+                    });
+        
+                    const filteredInHouseDryingData = Object.values(inHouseDryingMap).filter(item => matchesSearch(item, workerName, warehouseReceipt, batchCode) ||
+                        item.shelves.some(shelf => matchesSearch(shelf, workerName, warehouseReceipt, batchCode)) ||
+                        item.wShelves.some(shelf => matchesSearch(shelf, workerName, warehouseReceipt, batchCode)) ||
+                        item.mShelves.some(shelf => matchesSearch(shelf, workerName, warehouseReceipt, batchCode))
+                    );
+        
+                    if (filteredInHouseDryingData.length > 0) {
+                        displayData('In-House-Drying', filteredInHouseDryingData);
+                    }
+        
+                    for (const modelName of modelNames) {
+                        if (!['In-House-Drying', 'Shelves', 'W_Shelves', 'M_Shelves'].includes(modelName)) {
+                            const data = await getObjectStoreData(db, modelName);
+                            const filteredData = data.filter(item => matchesSearch(item, workerName, warehouseReceipt, batchCode));
+                            if (filteredData.length > 0) {
+                                displayData(modelName, filteredData);
+                            }
+                        }
+                    }
+                } catch (error) {
+                    console.error('Error displaying IndexedDB tables:', error);
+                }
+            }
+        
+            function performSearch() {
+                event.preventDefault();
+                const workerName = document.getElementById('workerNameSearch').value;
+                const warehouseReceipt = document.getElementById('warehouseReceiptSearch').value;
+                const batchCode = document.getElementById('batchCodeSearch').value;
+                document.getElementById('tables').innerHTML = '';
+                
+                // Only proceed with displaying if at least one search field has input
+                if (workerName || warehouseReceipt || batchCode) {
+                    displayIndexedDBTables(workerName, warehouseReceipt, batchCode);
+                }
+            }
+        
+            displayIndexedDBTables();
+        </script>
 
 
+<!-- 
 
 
 
@@ -434,7 +568,7 @@
 
 
 
-
+ -->
 
 
 
