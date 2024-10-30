@@ -2480,6 +2480,7 @@ class In_House_Drying(models.Model):
     STATION= models.CharField('Station',max_length=50,  choices=STATION_CHOICES, null=True)
     entryCheck = models.CharField(default = shelf_id, max_length=50)
     DATE_CREATED = models.DateField('Date of Sampling',null=True,)
+    COMPLETE= models.CharField('Is it Complete',null=True,blank=True, max_length=50)
 
     DATE_OF_PURCHASE= models.DateField('Date of Purchase',null=True)
     PLACE_OF_PURCHASE= models.CharField('Place of Purchase ',max_length=50,null=True,  choices=PLACE_OF_PURCHASE_CHOICES)
