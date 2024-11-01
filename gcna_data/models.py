@@ -519,9 +519,9 @@ class Quality_Control(models.Model):
 
     DATE_1 = models.DateField(null=True) 
     STATION = models.CharField(max_length=50, choices=Stations,null=True)
-    BATCH_NUMBER = models.IntegerField(default= 0)
-    REWORK = models.CharField(max_length=50,choices=RE, null=True)
-    SAMPLE_WEIGHT = models.FloatField(default= 0)
+    BATCH_NUMBER = models.CharField(max_length= 50)
+    REWORK = models.CharField(max_length=50,choices=RE,null=True,blank=True)
+    SAMPLE_WEIGHT = models.FloatField(default= 0,null=True,blank=True)
 
     # TOLERANCE LIMITS FOR DEFECTS
 
@@ -531,98 +531,98 @@ class Quality_Control(models.Model):
 
 
     # WEIGHT (oz/lbs)
-    Nutmeg_Assorted = models.CharField(max_length=50, choices=Sort, null=True)
-    Nutmeg_Assorted2 = models.CharField(max_length=50, choices=Sort, null=True)
-    Nutmeg_Assorted_cont = models.CharField(max_length=50, null=True)
-    ASSORTOR1 = models.CharField(max_length=50, null=True)
-    ASSORTOR2 = models.CharField(max_length=50, null=True)
-    ASSORTOR3 = models.CharField(max_length=50, null=True)
-    ASSORTOR4 = models.CharField(max_length=50, null=True)
-    ASSORTOR5 = models.CharField(max_length=50, null=True)
-    ASSORTOR6 = models.CharField(max_length=50, null=True)
+    Nutmeg_Assorted = models.CharField(max_length=50, choices=Sort, null=True,blank=True)
+    Nutmeg_Assorted2 = models.CharField(max_length=50, choices=Sort, null=True,blank=True)
+    Nutmeg_Assorted_cont = models.CharField(max_length=50, null=True,blank=True)
+    ASSORTOR1 = models.CharField(max_length=50, null=True,blank=True)
+    ASSORTOR2 = models.CharField(max_length=50, null=True,blank=True)
+    ASSORTOR3 = models.CharField(max_length=50, null=True,blank=True)
+    ASSORTOR4 = models.CharField(max_length=50, null=True,blank=True)
+    ASSORTOR5 = models.CharField(max_length=50, null=True,blank=True)
+    ASSORTOR6 = models.CharField(max_length=50, null=True,blank=True)
 
 
-    ASSORTOR1_A = models.CharField(max_length=50, null=True)
-    ASSORTOR1_B = models.CharField(max_length=50, null=True)
-    ASSORTOR1_C = models.CharField(max_length=50, null=True)
-    ASSORTOR1_D = models.CharField(max_length=50, null=True)
-    ASSORTOR1_E = models.CharField(max_length=50, null=True)
-
-
-
-
-
-    ASSORTOR2 = models.CharField(max_length=50, null=True)
-
-
-    ASSORTOR2_A = models.CharField(max_length=50, null=True)
-    ASSORTOR2_B = models.CharField(max_length=50, null=True)
-    ASSORTOR2_C = models.CharField(max_length=50, null=True)
-    ASSORTOR2_D = models.CharField(max_length=50, null=True)
-    ASSORTOR2_E = models.CharField(max_length=50, null=True)
+    ASSORTOR1_A = models.CharField(max_length=50, null=True,blank=True)
+    ASSORTOR1_B = models.CharField(max_length=50, null=True,blank=True)
+    ASSORTOR1_C = models.CharField(max_length=50, null=True,blank=True)
+    ASSORTOR1_D = models.CharField(max_length=50, null=True,blank=True)
+    ASSORTOR1_E = models.CharField(max_length=50, null=True,blank=True)
 
 
 
 
 
+    ASSORTOR2 = models.CharField(max_length=50, null=True,blank=True)
 
 
-    ASSORTOR3 = models.CharField(max_length=50, null=True)
-
-
-    ASSORTOR3_A = models.CharField(max_length=50, null=True)
-    ASSORTOR3_B = models.CharField(max_length=50, null=True)
-    ASSORTOR3_C = models.CharField(max_length=50, null=True)
-    ASSORTOR3_D = models.CharField(max_length=50, null=True)
-    ASSORTOR3_E = models.CharField(max_length=50, null=True)
-
-
-    ASSORTOR4 = models.CharField(max_length=50, null=True)
-
-
-    ASSORTOR4_A = models.CharField(max_length=50, null=True)
-    ASSORTOR4_B = models.CharField(max_length=50, null=True)
-    ASSORTOR4_C = models.CharField(max_length=50, null=True)
-    ASSORTOR4_D = models.CharField(max_length=50, null=True)
-    ASSORTOR4_E = models.CharField(max_length=50, null=True)
-
-
-    ASSORTOR5 = models.CharField(max_length=50, null=True)
+    ASSORTOR2_A = models.CharField(max_length=50, null=True,blank=True)
+    ASSORTOR2_B = models.CharField(max_length=50, null=True,blank=True)
+    ASSORTOR2_C = models.CharField(max_length=50, null=True,blank=True)
+    ASSORTOR2_D = models.CharField(max_length=50, null=True,blank=True)
+    ASSORTOR2_E = models.CharField(max_length=50, null=True,blank=True)
 
 
 
-    ASSORTOR5_A = models.CharField(max_length=50, null=True)
-    ASSORTOR5_B = models.CharField(max_length=50, null=True)
-    ASSORTOR5_C = models.CharField(max_length=50, null=True)
-    ASSORTOR5_D = models.CharField(max_length=50, null=True)
-    ASSORTOR5_E = models.CharField(max_length=50, null=True)
-
-    SUPERVISOR_A = models.CharField(max_length=50, null=True)
-    SUPERVISOR_B = models.CharField(max_length=50, null=True)
-    SUPERVISOR_C = models.CharField(max_length=50, null=True)
-    SUPERVISOR_D = models.CharField(max_length=50, null=True)
-    SUPERVISOR_E = models.CharField(max_length=50, null=True)
-
-    SOUNDS = models.FloatField(default= 0)
-    PINHOLES = models.FloatField(default= 0)
-    CRACKED = models.FloatField(default= 0)
-    BROKEN = models.FloatField(default= 0)
-    PIECES = models.FloatField(default= 0)
-    FOREIGN_MATTER = models.FloatField(default= 0)
 
 
-    SUPERVISOR = models.CharField(max_length=50, null=True)
-    COMMENTS = models.TextField(blank=True) 
 
 
-    Approved_BY = models.CharField(max_length=50, null=True)
-    Station_Manager = models.CharField(max_length=50, null=True)      
-    DATE_OF_REPORT = models.DateField(null=True) 
+    ASSORTOR3 = models.CharField(max_length=50, null=True,blank=True)
+
+
+    ASSORTOR3_A = models.CharField(max_length=50, null=True,blank=True)
+    ASSORTOR3_B = models.CharField(max_length=50, null=True,blank=True)
+    ASSORTOR3_C = models.CharField(max_length=50, null=True,blank=True)
+    ASSORTOR3_D = models.CharField(max_length=50, null=True,blank=True)
+    ASSORTOR3_E = models.CharField(max_length=50, null=True,blank=True)
+
+
+    ASSORTOR4 = models.CharField(max_length=50, null=True,blank=True)
+
+
+    ASSORTOR4_A = models.CharField(max_length=50, null=True,blank=True)
+    ASSORTOR4_B = models.CharField(max_length=50, null=True,blank=True)
+    ASSORTOR4_C = models.CharField(max_length=50, null=True,blank=True)
+    ASSORTOR4_D = models.CharField(max_length=50, null=True,blank=True)
+    ASSORTOR4_E = models.CharField(max_length=50, null=True,blank=True)
+
+
+    ASSORTOR5 = models.CharField(max_length=50, null=True,blank=True)
+
+
+
+    ASSORTOR5_A = models.CharField(max_length=50, null=True,blank=True)
+    ASSORTOR5_B = models.CharField(max_length=50, null=True,blank=True)
+    ASSORTOR5_C = models.CharField(max_length=50, null=True,blank=True)
+    ASSORTOR5_D = models.CharField(max_length=50, null=True,blank=True)
+    ASSORTOR5_E = models.CharField(max_length=50, null=True,blank=True)
+
+    SUPERVISOR_A = models.CharField(max_length=50, null=True,blank=True)
+    SUPERVISOR_B = models.CharField(max_length=50, null=True,blank=True)
+    SUPERVISOR_C = models.CharField(max_length=50, null=True,blank=True)
+    SUPERVISOR_D = models.CharField(max_length=50, null=True,blank=True)
+    SUPERVISOR_E = models.CharField(max_length=50, null=True,blank=True)
+
+    SOUNDS = models.FloatField(default= 0,null=True,blank=True)
+    PINHOLES = models.FloatField(default= 0,null=True,blank=True)
+    CRACKED = models.FloatField(default= 0,null=True,blank=True)
+    BROKEN = models.FloatField(default= 0,null=True,blank=True)
+    PIECES = models.FloatField(default= 0,null=True,blank=True)
+    FOREIGN_MATTER = models.FloatField(default= 0,null=True,blank=True)
+
+
+    SUPERVISOR = models.CharField(max_length=50, null=True,blank=True)
+    COMMENTS = models.TextField(blank=True,null=True) 
+
+
+    Approved_BY = models.CharField(max_length=50, null=True,blank=True)
+    Station_Manager = models.CharField(max_length=50, null=True,blank=True)      
+    DATE_OF_REPORT = models.DateField(null=True,blank=True) 
 
     # CHECKED BY QA OFFICER
 
-    SIGNED_BY_QUALITY_ASSURANCE_OFFICER = models.CharField(max_length=50, null=True)
-    DATE_2 = models.DateField(null=True) 
+    SIGNED_BY_QUALITY_ASSURANCE_OFFICER = models.CharField(max_length=50, null=True,blank=True)
+    DATE_2 = models.DateField(null=True,blank=True) 
 
 #    def __str__(self):
 #        return self.COMMENTS
@@ -2480,7 +2480,6 @@ class In_House_Drying(models.Model):
     STATION= models.CharField('Station',max_length=50,  choices=STATION_CHOICES, null=True)
     entryCheck = models.CharField(default = shelf_id, max_length=50)
     DATE_CREATED = models.DateField('Date of Sampling',null=True,)
-    COMPLETE= models.CharField('Is it Complete',null=True,blank=True, max_length=50)
 
     DATE_OF_PURCHASE= models.DateField('Date of Purchase',null=True)
     PLACE_OF_PURCHASE= models.CharField('Place of Purchase ',max_length=50,null=True,  choices=PLACE_OF_PURCHASE_CHOICES)
@@ -2490,6 +2489,12 @@ class In_House_Drying(models.Model):
     START_DRYING_DATE= models.DateField('Start drying date',null=True)
     APPROX_END_DRYING_DATE= models.DateField('Approximate end drying date',null=True)
     END_DRYING_DATE= models.DateField('End drying date',null=True,blank=True)
+
+
+
+    COMPLETE= models.CharField('Is it Complete',null=True,blank=True, max_length=50)
+
+
 
 # PLACEMENT ON SHELF
 
@@ -4483,6 +4488,7 @@ class Vehicle_Inspection(models.Model):
         ('--Select Decisiion--', '--Select Decisiion--'),
         ('Mace', 'Mace'),
         ('Nutmeg', 'Nutmeg'),
+        ('Other', 'Other'),
 
 
    
@@ -4554,6 +4560,7 @@ class Vehicle_Inspection(models.Model):
 
 
     Cargo_present= models.CharField(max_length=50, choices=CARGO_OPTIONS, default='--Select Provider--')
+    Cargo_present_cont= models.CharField(max_length=50,null=True,blank=True)
     Condition_of_cargo= models.CharField(max_length=50, choices=CARGO_CONDITION_OPTIONS, default='--Select Provider--')
     covered_goods= models.CharField(max_length=50, choices=CONFIRMATION_OPTIONS, default='--Select Provider--')
 
