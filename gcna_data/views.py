@@ -403,8 +403,9 @@ def add_Mace_Dispatched(request):
 	submitted = False
 
 	form = Mace_Dispatched_Form()
+	form_popups = Vehicle_Inspection_Form()
 
-	return render(request,'gcna/Mace_Dispatched.html',{'form':form,  'submitted':submitted})
+	return render(request,'gcna/Mace_Dispatched.html',{'form':form,'form_popups':form_popups,  'submitted':submitted})
 
 
 def add_Mace_Purchase(request):
@@ -14111,8 +14112,21 @@ def view_In_House_Drying_table_0(request):
 
 	# except In_House_Drying.DoesNotExist:
 	# 	return redirect('error_table_driedA')
+	
 
-	return render(request,'gcna/view_IHD_0.html')
+
+	form = In_House_Drying_Form()
+	form1 = Shelves_Form()
+	form2 = SectionForm()
+
+
+
+
+
+
+
+
+	return render(request,'gcna/view_IHD_0.html',{'form':form,'form1':form1,'form2':form2})
 
 
 
