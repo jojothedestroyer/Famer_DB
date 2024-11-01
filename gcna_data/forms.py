@@ -124,6 +124,7 @@ class Mace_Dispatched_Rec_Form(ModelForm):
         fields = '__all__'
         widgets ={
 
+    'Date': forms.DateInput(attrs={'type':'date','class':'form-control'}),
 
     'STATION': forms.Select(attrs={'class':'form-control'}),    
     'BATCH_CODE': forms.TextInput(attrs={'class':'form-control'}),
@@ -146,7 +147,13 @@ class Mace_Dispatched_Rec_Form(ModelForm):
     'BATCH_CODE_M3': forms.TextInput(attrs={'class':'form-control'}),
 
      'Delivery_advice_num': forms.TextInput(attrs={'class':'form-control'}),
-
+'Station_rec':forms.TextInput(attrs={'class':'form-control'}),
+'Product' :forms.TextInput(attrs={'class':'form-control'}),
+'Num_Bags': forms.NumberInput(attrs={'class':'form-control'}),
+'Weight': forms.NumberInput(attrs={'class':'form-control'}),
+'conf_Product':forms.TextInput(attrs={'class':'form-control'}),
+'conf_Num_Bags': forms.NumberInput(attrs={'class':'form-control'}),
+'conf_Weight': forms.NumberInput(attrs={'class':'form-control'}),
 
         }
  
@@ -253,25 +260,54 @@ class Mace_Purchase_Form(ModelForm):
 
 
 
-
 class Dispatch_Of_Dried_Nutmeg_Rec_Form(ModelForm):
+    Date = forms.DateField(
+        initial=date.today,
+        widget=forms.DateInput(attrs={'type': 'date', 'class': 'form-control'})
+    )
+
     class Meta:
         model = Dispatch_Of_Dried_Nutmeg_Rec
         fields = '__all__'
-        widgets ={
-
-
+        widgets = {
+            'Station': forms.TextInput(attrs={'class':'form-control'}),
+            'BatchCode': forms.TextInput(attrs={'class':'form-control'}),
+            'Vehicle_number': forms.TextInput(attrs={'class':'form-control'}),
+            'Delivery_advice_num': forms.TextInput(attrs={'class':'form-control'}),
+            'WAREHOUSE_RECEIPT_NUMBER': forms.TextInput(attrs={'class':'form-control'}),
+            'Station_rec': forms.TextInput(attrs={'class':'form-control'}),
+            'Product': forms.TextInput(attrs={'class':'form-control'}),
+            'Num_Bags': forms.TextInput(attrs={'class':'form-control'}),
+            'Weight': forms.TextInput(attrs={'class':'form-control'}),
+            'conf_Product': forms.TextInput(attrs={'class':'form-control'}),
+            'conf_Num_Bags': forms.TextInput(attrs={'class':'form-control'}),
+            'conf_Weight': forms.TextInput(attrs={'class':'form-control'}),
         }
-		
 
+
+date
 
 class Dispatch_Of_Green_Nutmeg_Rec_Form(ModelForm):
+    Date = forms.DateField(
+        initial=date.today,
+        widget=forms.DateInput(attrs={'type': 'date', 'class': 'form-control'})
+    )
+
     class Meta:
         model = Dispatch_Of_Green_Nutmeg_Rec
         fields = '__all__'
-        widgets ={
-
-
+        widgets = {
+            'Station': forms.TextInput(attrs={'class':'form-control'}),
+            'BatchCode': forms.TextInput(attrs={'class':'form-control'}),
+            'WAREHOUSE_RECEIPT_NUMBER': forms.TextInput(attrs={'class':'form-control'}),
+            'Delivery_advice_num': forms.TextInput(attrs={'class':'form-control'}),
+            'Station_rec': forms.TextInput(attrs={'class':'form-control'}),
+            'Product': forms.TextInput(attrs={'class':'form-control'}),
+            'Num_Bags': forms.TextInput(attrs={'class':'form-control'}),
+            'Weight': forms.TextInput(attrs={'class':'form-control'}),
+            'conf_Product': forms.TextInput(attrs={'class':'form-control'}),
+            'conf_Num_Bags': forms.TextInput(attrs={'class':'form-control'}),
+            'conf_Weight': forms.TextInput(attrs={'class':'form-control'}),
         }
 
 
@@ -316,6 +352,9 @@ class Vehicle_Inspection_Form(ModelForm):
 
 
     'Cargo_present': forms.Select(attrs={'class':'form-control'}),
+    'Cargo_present_cont': forms.Textarea(attrs={'class':'form-control'}),
+
+    
     'Condition_of_cargo': forms.Select(attrs={'class':'form-control'}),
     'covered_goods': forms.Select(attrs={'class':'form-control'}),
 
@@ -344,7 +383,11 @@ class Final_Weight_Inspection_Form(ModelForm):
         model = Final_Weight_Inspection
         fields = '__all__'
         widgets ={
-
+'Date': forms.DateInput(attrs={'type':'date','class':'form-control'}),
+'Purchase_order': forms.TextInput(attrs={'class':'form-control'}),
+'product_description': forms.TextInput(attrs={'class':'form-control'}),
+'Batch_number': forms.TextInput(attrs={'class':'form-control'}),
+'linkCheck': forms.TextInput(attrs={'class':'form-control'}),
 
         }
 
@@ -721,6 +764,9 @@ class Cracking_Schedule_Form(ModelForm):
 
 
         }
+
+
+
 
 
 
@@ -2260,12 +2306,22 @@ class Dispatch_Of_Dried_Nutmeg_Form(ModelForm):
         'Worker_ID_No' : forms.HiddenInput(attrs={'class':'form-control'}),
     'Worker_ID_Name': forms.HiddenInput(attrs={'class':'form-control'}),
     
+    'STATION_recieved': forms.TextInput(attrs={'class':'form-control'}),
 
     'Nutmeg_ID_No': forms.HiddenInput(attrs={'class':'form-control'}),
     'STATION': forms.Select(attrs={'class':'form-control'}),
     'DATE_OF_PICK_UP': forms.DateInput(attrs={'type':'date','class':'form-control'}),
     'FINAL_MOISTURE_CONTENT': forms.NumberInput(attrs={'class':'form-control'}),
-   
+       'BATCH_CODES': forms.TextInput(attrs={'class':'form-control'}),
+       'BATCH_NUMBER': forms.TextInput(attrs={'class':'form-control'}),
+
+
+    'Weight': forms.TextInput(attrs={'class':'form-control'}),
+    'Product': forms.TextInput(attrs={'class':'form-control'}),
+    'Num_Bags': forms.NumberInput(attrs={'class':'form-control'}),
+    'Weight': forms.NumberInput(attrs={'class':'form-control'}),
+
+
     # LOCATION1
     # 'Ground_1': forms.NumberInput(attrs={'class':'form-control'}), 
     # 'Floor_1st_1': forms.NumberInput(attrs={'class':'form-control'}),
@@ -2559,6 +2615,7 @@ class Dispatch_Of_Green_Nutmeg_Form(ModelForm):
     'DELIVERY_ADVICE_NUMBER': forms.TextInput(attrs={'class':'form-control'}),
     'WAREHOUSE_RECEIPT_NUMBER': forms.TextInput(attrs={'class':'form-control'}),
     'CONTROL_NUMBER': forms.TextInput(attrs={'class':'form-control'}),
+    'BATCH_CODES': forms.TextInput(attrs={'class':'form-control'}),
         }
 
 
@@ -2579,7 +2636,22 @@ class Cracking_Summary_Form(ModelForm):
     'WAREHOUSE_RECEIPT_NUMBERS': forms.TextInput(attrs={'class':'form-control'}),
     'NUM_OF_BAGS': forms.NumberInput(attrs={'class':'form-control'}),
     'LBS_OF_NUTMEGS_CRACKED': forms.NumberInput(attrs={'class':'form-control'}),
-
+            'STATION': forms.Select(attrs={'class':'form-control'}),
+            'WAREHOUSE_RECEIPT_NUMBERS': forms.TextInput(attrs={'class':'form-control'}),
+            'NUM_OF_BAGS': forms.NumberInput(attrs={'class':'form-control'}),
+            'LBS_OF_NUTMEGS_CRACKED': forms.NumberInput(attrs={'class':'form-control'}),
+            'Delivery_Advice_Num': forms.TextInput(attrs={'class':'form-control'}),
+            'Control_Num': forms.TextInput(attrs={'class':'form-control'}),
+            'BatchCodes': forms.TextInput(attrs={'class':'form-control'}),
+            'num_pieces': forms.TextInput(attrs={'class':'form-control'}),
+            'fragments': forms.TextInput(attrs={'class':'form-control'}),
+            'regular_nutmeg': forms.TextInput(attrs={'class':'form-control'}),
+            'escape_nutmeg': forms.TextInput(attrs={'class':'form-control'}),
+            'num_floaters': forms.TextInput(attrs={'class':'form-control'}),
+            'lbs_floated': forms.TextInput(attrs={'class':'form-control'}),
+            'date': forms.TextInput(attrs={'class':'form-control'}),
+            'lbs_lights': forms.TextInput(attrs={'class':'form-control'}),
+            'lbs_heavies': forms.TextInput(attrs={'class':'form-control'}),
 
         }
 
@@ -3236,7 +3308,7 @@ class Quality_Form(ModelForm):
 
 	'DATE_1': forms.DateInput(attrs={'type':'date','class':'form-control'}),
     'STATION':forms.Select(attrs={'class':'form-control'}),
-    'BATCH_NUMBER' :forms.NumberInput(attrs={'class':'form-control'}),
+    'BATCH_NUMBER' :forms.TextInput(attrs={'class':'form-control'}),
     'REWORK':forms.Select(attrs={'class':'form-control'}),
     'SAMPLE_WEIGHT' :forms.NumberInput(attrs={'class':'form-control'}),
     'Nutmeg_Assorted':forms.Select(attrs={'class':'form-control'}),
