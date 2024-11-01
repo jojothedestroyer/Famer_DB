@@ -356,26 +356,26 @@ $(document).ready(function() {
 
 
         <tr>
-            <th>Number of Nutmeg Pieces</th>
+            <th>Number of Nutmeg Pieces(lbs)</th>
             <td>{{ form.num_pieces }}</td>
         </tr>
 
 
         <tr>
-            <th>Number of Nutmeg Fragments</th>
+            <th>Number of Nutmeg Fragments(lbs)</th>
             <td>{{ form.fragments }}</td>
         </tr>
 
 
         <tr>
-            <th>Number of Regular Nutmeg </th>
+            <th>Number of Regular Nutmeg(lbs) </th>
             <td>{{ form.regular_nutmeg }}</td>
         </tr>
 
 
 
         <tr>
-            <th>Number of Nutmeg Escapes</th>
+            <th>Number of Nutmeg Escapes(lbs)</th>
             <td>{{ form.escape_nutmeg }}</td>
         </tr>
 
@@ -866,7 +866,7 @@ function updateControlNum2(checkbox1) {
                   <script>
     function  set_valuecode(batchnum,station,whr,del) {
     
-        document.querySelector('[name="Control_Num"]').value = batchnum ;
+        document.querySelector('[name="BatchCodes"]').value = batchnum ;
         document.querySelector('[name="Station"]').value = station ;
         document.querySelector('[name="WAREHOUSE_RECEIPT_NUMBER"]').value = whr ;
         document.querySelector('[name="Delivery_advice_num"]').value = del ;
