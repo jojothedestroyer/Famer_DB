@@ -85,6 +85,26 @@
     });
   </script>
   
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const cargoPresentField = document.querySelector('[name="Cargo_present"]');
+        const cargoPresentContRow = document.getElementById('cargoPresentContRow');
+
+        function toggleCargoPresentCont() {
+            if (cargoPresentField.value === 'Other') {
+                cargoPresentContRow.style.display = 'table-row';
+            } else {
+                cargoPresentContRow.style.display = 'none';
+            }
+        }
+
+        // Run the function on page load to check the initial value
+        toggleCargoPresentCont();
+
+        // Add an event listener to handle changes in Cargo_present
+        cargoPresentField.addEventListener('change', toggleCargoPresentCont);
+    });
+</script>
   
 
 <form id="myForm" style="
@@ -261,6 +281,9 @@ overflow: auto; /* Add overflow property for scrolling */
                         <th colspan="2" class="main-header" style="text-align:center;">{{form.Cargo_present}}</th>
 
 
+                    </tr>
+                    <tr id="cargoPresentContRow" style="display: none;">
+                        <th colspan="4" class="main-header" style="text-align:center;">{{ form.Cargo_present_cont }}</th>
                     </tr>
 
                     <tr>
