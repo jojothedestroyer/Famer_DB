@@ -1,291 +1,48 @@
-// const modelNames = ['Worker', 'Farmer', 'DriedA', 'DriedB', 'FloatA', 'FloatB', 'Quaility', 'visit', 'In-House-Drying', 'Dispatch-Of-Dried-Nutmeg', 'Dispatch-Of-Green', 'Cracking-Summary', 'Floation-Summary', 'Package-Ciontrol', 'Editors', 'Labour-support', 'Training-support', 'land-info', 'Land-Tenur', 'Nutmeg-Trees', 'Nutmeg-Variety', 'Other-Crops', 'Coconut-Trees', 'Citrus-Mango-Trees', 'Other-Spices-Trees', 'Other-Seasoning-Trees', 'Other-Crops-Cultivated', 'Condition', 'Nutmeg-Land', 'Nutmeg-Frequency', 'Potential-Risks', 'Road-Access', 'Food-Safety-and-Quality', 'Farm-Water-Source', 'Farm-House', 'inspector-symmary', 'Policy','Sanitation-A','Sanitation-B','Sanitation-C','Cracking_Schedule','Assorting_Log',
-// 'Extractor_Log',
-// 'Fumigation_Log','Shelves'];
-
-// function deleteDatabase() {
-//     return new Promise((resolve, reject) => {
-//         const request = indexedDB.deleteDatabase('GCNA');
-
-//         request.onsuccess = function () {
-//             resolve();
-//         };
-
-//         request.onerror = function (event) {
-//             reject(event.target.error);
-//         };
-//     });
-// }
-
-// function openIndexedDBConnection() {
-//     return new Promise((resolve, reject) => {
-//         const request = indexedDB.open('GCNA', 2);
-
-//         request.onupgradeneeded = function (event) {
-//             const db = event.target.result;
-//             modelNames.forEach(modelName => {
-//                 if (!db.objectStoreNames.contains(modelName)) {
-//                     db.createObjectStore(modelName, { keyPath: 'id' });
-//                 }
-//             });
-//         };
-
-//         request.onsuccess = function (event) {
-//             resolve(event.target.result);
-//         };
-
-//         request.onerror = function (event) {
-//             reject(event.target.error);
-//         };
-//     });
-// }
-
-// function fetchDataAndStore(db, modelName) {
-//     return new Promise((resolve, reject) => {
-//         fetch(`/api/${modelName}/`)
-//             .then(response => response.json())
-//             .then(data => {
-//                 const transaction = db.transaction(modelName, 'readwrite');
-//                 const objectStore = transaction.objectStore(modelName);
-//                 data.forEach(item => {
-//                     objectStore.put(item);
-//                 });
-
-//                 transaction.oncomplete = function () {
-//                     resolve();
-//                 };
-//             })
-//             .catch(error => {
-//                 console.error('Error fetching data for model:', modelName, error);
-//                 reject(error);
-//             });
-//     });
-// }
-
-// deleteDatabase()
-//     .then(() => openIndexedDBConnection())
-//     .then(db => Promise.all(modelNames.map(modelName => fetchDataAndStore(db, modelName))))
-//     .then(() => console.log('All models stored successfully.'))
-//     .catch(error => console.error('Error storing models:', error));
-
-
-
-
-
-
-
-
-
-
-// // , 'Policy/<int:id>
-// const modelNames = ['Worker', 'Farmer', 'DriedA', 'DriedB', 'FloatA', 'FloatB', 'Quaility', 'visit', 'In-House-Drying', 'Dispatch-Of-Dried-Nutmeg', 'Dispatch-Of-Green', 'Cracking-Summary', 'Floation-Summary', 'Package-Ciontrol', 'Editors', 'Labour-support', 'Training-support', 'land-info', 'Land-Tenur', 'Nutmeg-Trees', 'Nutmeg-Variety', 'Other-Crops', 'Coconut-Trees', 'Citrus-Mango-Trees', 'Other-Spices-Trees', 'Other-Seasoning-Trees', 'Other-Crops-Cultivated', 'Condition', 'Nutmeg-Land', 'Nutmeg-Frequency', 'Potential-Risks', 'Road-Access', 'Food-Safety-and-Quality', 'Farm-Water-Source', 'Farm-House', 'inspector-symmary', 'Policy','Sanitation-A','Sanitation-B','Sanitation-C','Cracking_Schedule','Assorting_Log',
-// 'Extractor_Log',
-// 'Fumigation_Log','Shelves'];
-
-
-// function deleteDatabase(dbName) {
-//     return new Promise((resolve, reject) => {
-//         const request = indexedDB.deleteDatabase(dbName);
-
-
-//         request.onsuccess = function () {
-//             resolve();
-//         };
-
-
-//         request.onerror = function (event) {
-//             reject(event.target.error);
-//         };
-//     });
-// }
-
-
-// function openIndexedDBConnection(dbName) {
-//     return new Promise((resolve, reject) => {
-//         const request = indexedDB.open(dbName, 2);
-
-
-//         request.onupgradeneeded = function (event) {
-//             const db = event.target.result;
-//             modelNames.forEach(modelName => {
-//                 db.createObjectStore(modelName, { keyPath: 'id' });
-//             });
-//         };
-
-
-//         request.onsuccess = function (event) {
-//             resolve(event.target.result);
-//         };
-
-
-//         request.onerror = function (event) {
-//             reject(event.target.error);
-//         };
-//     });
-// }
-
-
-// function fetchDataAndStore(db, modelName) {
-//     return new Promise((resolve, reject) => {
-//         fetch(`/api/${modelName}/`)
-//             .then(response => response.json())
-//             .then(data => {
-//                 const transaction = db.transaction(modelName, 'readwrite');
-//                 const objectStore = transaction.objectStore(modelName);
-//                 data.forEach(item => {
-//                     objectStore.put(item);
-//                 });
-
-
-//                 transaction.oncomplete = function () {
-//                     resolve();
-//                 };
-//             })
-//             .catch(error => {
-//                 console.error('Error fetching data for model:', modelName, error);
-//                 reject(error);
-//             });
-//     });
-// }
-
-
-// // Create "GCNA" database
-// const gcnaDBName = 'GCNA';
-
-
-// deleteDatabase(gcnaDBName)
-//     .then(() => openIndexedDBConnection(gcnaDBName))
-//     .then(db => Promise.all(modelNames.map(modelName => fetchDataAndStore(db, modelName))))
-//     .then(() => console.log(`Database "${gcnaDBName}" created successfully with data.`))
-//     .catch(error => console.error(`Error creating database "${gcnaDBName}":`, error));
-
-
-// // Create "DELETED" database
-// const deletedDBName = 'DELETED';
-
-
-// deleteDatabase(deletedDBName)
-//     .then(() => openIndexedDBConnection(deletedDBName))
-//     .then(db => {
-//         // Close the connection to "DELETED" to ensure it is created with empty object stores
-//         db.close();
-//         console.log(`Database "${deletedDBName}" created successfully with empty object stores.`);
-//     })
-//     .catch(error => console.error(`Error creating database "${deletedDBName}":`, error));
-
-
-
-// const modelNames = ['Worker', 'Farmer', 'DriedA', 'DriedB', 'FloatA', 'FloatB', 'Quaility', 'visit', 'In-House-Drying', 'Dispatch-Of-Dried-Nutmeg', 'Dispatch-Of-Green', 'Cracking-Summary', 'Floation-Summary', 'Package-Ciontrol', 'Editors', 'Labour-support', 'Training-support', 'land-info', 'Land-Tenur', 'Nutmeg-Trees', 'Nutmeg-Variety', 'Other-Crops', 'Coconut-Trees', 'Citrus-Mango-Trees', 'Other-Spices-Trees', 'Other-Seasoning-Trees', 'Other-Crops-Cultivated', 'Condition', 'Nutmeg-Land', 'Nutmeg-Frequency', 'Potential-Risks', 'Road-Access', 'Food-Safety-and-Quality', 'Farm-Water-Source', 'Farm-House', 'inspector-symmary', 'Policy','Sanitation-A','Sanitation-B','Sanitation-C','Cracking_Schedule','Assorting_Log',
-// 'Extractor_Log',
-// 'Fumigation_Log','Shelves','W_Shelves','M_Shelves','W_Shelves_Dried','M_Shelves_Dried','Vehicle_Inspection','Final_Weight_Inspection','Final_Weight_Inspection_fields','Dispatch_Of_Dried_Nutmeg_Rec','Dispatch_Of_Green_Nutmeg_Rec','Mace_Dispatched','Mace_Purchase','Mace_Dispatched_Rec'];
-
-
-
-// function deleteDatabase(dbName) {
-//     return new Promise((resolve, reject) => {
-//         const request = indexedDB.deleteDatabase(dbName);
-
-
-//         request.onsuccess = function () {
-//             resolve();
-//         };
-
-
-//         request.onerror = function (event) {
-//             reject(event.target.error);
-//         };
-//     });
-// }
-
-
-// function openIndexedDBConnection(dbName) {
-//     return new Promise((resolve, reject) => {
-//         const request = indexedDB.open(dbName, 2);
-
-
-//         request.onupgradeneeded = function (event) {
-//             const db = event.target.result;
-//             modelNames.forEach(modelName => {
-//                 db.createObjectStore(modelName, { keyPath: 'id' });
-//             });
-//         };
-
-
-//         request.onsuccess = function (event) {
-//             resolve(event.target.result);
-//         };
-
-
-//         request.onerror = function (event) {
-//             reject(event.target.error);
-//         };
-//     });
-// }
-
-
-// function fetchDataAndStore(db, modelName) {
-//     return new Promise((resolve, reject) => {
-//         fetch(`/api/${modelName}/`)
-//             .then(response => response.json())
-//             .then(data => {
-//                 const transaction = db.transaction(modelName, 'readwrite');
-//                 const objectStore = transaction.objectStore(modelName);
-//                 data.forEach(item => {
-//                     objectStore.put(item);
-//                 });
-
-
-//                 transaction.oncomplete = function () {
-//                     resolve();
-//                 };
-//             })
-//             .catch(error => {
-//                 console.error('Error fetching data for model:', modelName, error);
-//                 reject(error);
-//             });
-//     });
-// }
-
-
-// // Create "GCNA" database
-// const gcnaDBName = 'GCNA';
-
-
-// deleteDatabase(gcnaDBName)
-//     .then(() => openIndexedDBConnection(gcnaDBName))
-//     .then(db => Promise.all(modelNames.map(modelName => fetchDataAndStore(db, modelName))))
-//     .then(() => console.log(`Database "${gcnaDBName}" created successfully with data.`))
-//     .catch(error => console.error(`Error creating database "${gcnaDBName}":`, error));
-
-
-// // Create "DELETED" database
-// const deletedDBName = 'DELETED';
-
-
-// deleteDatabase(deletedDBName)
-//     .then(() => openIndexedDBConnection(deletedDBName))
-//     .then(db => {
-//         // Close the connection to "DELETED" to ensure it is created with empty object stores
-//         db.close();
-//         console.log(`Database "${deletedDBName}" created successfully with empty object stores.`);
-//     })
-//     .catch(error => console.error(`Error creating database "${deletedDBName}":`, error));
-
-const modelNamesSection1 = [
-    'Worker', 'Farmer', 'DriedA', 'DriedB', 'FloatA', 'FloatB', 'Quaility', 'visit', 
-    'In-House-Drying', 'Dispatch-Of-Dried-Nutmeg', 'Dispatch-Of-Green', 'Cracking-Summary', 
-    'Floation-Summary', 'Package-Ciontrol', 'Editors', 'Labour-support', 'Training-support', 
-    'land-info', 'Land-Tenur', 'Nutmeg-Trees', 'Nutmeg-Variety', 'Other-Crops', 'Coconut-Trees', 
-    'Citrus-Mango-Trees', 'Other-Spices-Trees', 'Other-Seasoning-Trees', 'Other-Crops-Cultivated', 
-    'Condition', 'Nutmeg-Land', 'Nutmeg-Frequency', 'Potential-Risks', 'Road-Access', 
-    'Food-Safety-and-Quality', 'Farm-Water-Source', 'Farm-House', 'inspector-symmary', 'Policy', 
-    'Sanitation-A','Sanitation-B','Sanitation-C','Cracking_Schedule','Assorting_Log',
-    'Extractor_Log','Fumigation_Log','Shelves','W_Shelves','M_Shelves','W_Shelves_Dried',
-    'M_Shelves_Dried','Vehicle_Inspection','Final_Weight_Inspection','Final_Weight_Inspection_fields',
-    'Dispatch_Of_Dried_Nutmeg_Rec','Dispatch_Of_Green_Nutmeg_Rec','Cracking_Extraction_Summary'
-];
+const modelNamesSection1 = ['Worker', 'Farmer', 'DriedA', 'DriedB', 'FloatA', 'FloatB', 'Quality', 'visit', 'In-House-Drying', 'Dispatch-Of-Dried-Nutmeg', 'Dispatch-Of-Green', 'Cracking-Summary', 'Floation-Summary', 'Package-Control', 'Editors', 'Labour-support', 'Training-support', 'land-info', 'Land-Tenure', 'Nutmeg-Trees', 'Nutmeg-Variety', 'Other-Crops', 'Coconut-Trees', 'Citrus-Mango-Trees', 'Other-Spices-Trees', 'Other-Seasoning-Trees', 'Other-Crops-Cultivated', 'Condition', 'Nutmeg-Land', 'Nutmeg-Frequency', 'Potential-Risks', 'Road-Access', 'Food-Safety-and-Quality', 'Farm-Water-Source', 'Farm-House', 'inspector-summary', 'Policy','Sanitation-A','Sanitation-B','Sanitation-C','Cracking_Schedule','Assorting_Log', 'Extractor_Log', 'Fumigation_Log','Shelves','W_Shelves','M_Shelves','W_Shelves_Dried','M_Shelves_Dried','Vehicle_Inspection','Final_Weight_Inspection','Final_Weight_Inspection_fields','Dispatch_Of_Dried_Nutmeg_Rec','Dispatch_Of_Green_Nutmeg_Rec','Cracking_Extraction_Summary'];
+
+// Function to check if the database already exists and is filled
+async function checkIfDatabaseExists(dbName) {
+    return new Promise((resolve, reject) => {
+        const request = indexedDB.open(dbName);
+        
+        request.onsuccess = function(event) {
+            const db = event.target.result;
+            const transaction = db.transaction(db.objectStoreNames[0], 'readonly');
+            const objectStore = transaction.objectStore(db.objectStoreNames[0]);
+            const countRequest = objectStore.count();
+
+            countRequest.onsuccess = function() {
+                db.close();
+                resolve(countRequest.result > 0);  // True if records exist, false otherwise
+            };
+
+            countRequest.onerror = function() {
+                db.close();
+                reject(new Error(`Error counting entries in ${dbName}`));
+            };
+        };
+
+        request.onerror = function() {
+            reject(new Error(`Error checking existence of database ${dbName}`));
+        };
+
+        request.onupgradeneeded = function(event) {
+            event.target.result.close();
+            resolve(false);  // Database is empty if it needs upgrading
+        };
+    });
+}
 
 async function better_transferIndexedDBData() {
-    const request = indexedDB.open('GCNA', 2);
+    const dbName = 'GCNA';
+    const dbExists = await checkIfDatabaseExists(dbName);
+    
+    if (dbExists) {
+        console.log('Database already exists and has data.');
+        return;
+    }
+    
+    const request = indexedDB.open(dbName, 2);
 
     return new Promise((resolve, reject) => {
         request.onerror = function(event) {
@@ -306,16 +63,9 @@ async function better_transferIndexedDBData() {
 
                         getRequest.onsuccess = function(event) {
                             const data = event.target.result;
-                            if (data.length > 0) {
-                                data.forEach(function(item) {
-                                    transactionPromises.push(better_sendDataToDjango(item, modelName));
-                                });
-                            } else {
-                                console.warn(`No data found in object store "${modelName}".`);
-                            }
-                        };
-                        getRequest.onerror = function(event) {
-                            console.error(`Failed to retrieve data from "${modelName}":`, event.target.error);
+                            data.forEach(function(item) {
+                                transactionPromises.push(better_sendDataToDjango(item, modelName));
+                            });
                         };
                     } else {
                         console.warn(`Object store "${modelName}" not found in IndexedDB.`);
@@ -326,8 +76,12 @@ async function better_transferIndexedDBData() {
             });
 
             Promise.all(transactionPromises)
-                .then(() => resolve())
-                .catch(error => reject(error));
+                .then(() => {
+                    resolve();
+                })
+                .catch(error => {
+                    reject(error);
+                });
         };
     });
 }
@@ -352,72 +106,11 @@ function better_sendDataToDjango(item, modelName) {
     });
 }
 
+// Run the function to check and fill database
 better_transferIndexedDBData()
     .then(() => {
-        console.log('Section1 completed successfully.');
-        const modelNamesSection2 = modelNamesSection1;
-        const gcnaDBName = 'GCNA';
-        const deletedDBName = 'DELETED';
-
-        function deleteDatabase(dbName) {
-            return new Promise((resolve, reject) => {
-                const request = indexedDB.deleteDatabase(dbName);
-                request.onsuccess = function () { resolve(); };
-                request.onerror = function (event) { reject(event.target.error); };
-            });
-        }
-
-        function openIndexedDBConnection(dbName, modelNames) {
-            return new Promise((resolve, reject) => {
-                const request = indexedDB.open(dbName, 2);
-                request.onupgradeneeded = function (event) {
-                    const db = event.target.result;
-                    modelNames.forEach(modelName => {
-                        if (!db.objectStoreNames.contains(modelName)) {
-                            db.createObjectStore(modelName, { keyPath: 'id' });
-                        }
-                    });
-                };
-
-                request.onsuccess = function (event) { resolve(event.target.result); };
-                request.onerror = function (event) { reject(event.target.error); };
-            });
-        }
-
-        function fetchDataAndStore(db, modelName) {
-            return new Promise((resolve, reject) => {
-                fetch(`/api/${modelName}/`)
-                    .then(response => response.json())
-                    .then(data => {
-                        const transaction = db.transaction(modelName, 'readwrite');
-                        const objectStore = transaction.objectStore(modelName);
-                        data.forEach(item => { objectStore.put(item); });
-
-                        transaction.oncomplete = function () {
-                            console.log(`Data successfully stored for "${modelName}".`);
-                            resolve();
-                        };
-                    })
-                    .catch(error => {
-                        console.error('Error fetching data for model:', modelName, error);
-                        reject(error);
-                    });
-            });
-        }
-
-        deleteDatabase(gcnaDBName)
-            .then(() => openIndexedDBConnection(gcnaDBName, modelNamesSection2))
-            .then(db => Promise.all(modelNamesSection2.map(modelName => fetchDataAndStore(db, modelName))))
-            .then(() => console.log(`Database "${gcnaDBName}" created successfully with data.`))
-            .catch(error => console.error(`Error creating database "${gcnaDBName}":`, error));
-
-        deleteDatabase(deletedDBName)
-            .then(() => openIndexedDBConnection(deletedDBName, []))
-            .then(db => {
-                db.close();
-                console.log(`Database "${deletedDBName}" created successfully with empty object stores.`);
-            })
-            .catch(error => console.error(`Error creating database "${deletedDBName}":`, error));
+        console.log('Data transfer completed successfully.');
     })
-    .catch(error => console.error('Error in Section1:', error));
-
+    .catch(error => {
+        console.error('Error in data transfer:', error);
+    });
