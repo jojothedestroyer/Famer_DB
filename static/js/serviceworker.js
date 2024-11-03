@@ -722,57 +722,130 @@
 
 
 
+// self.addEventListener('install', (event) => {
+//     event.waitUntil(
+//         caches.open('gcna-offline-access').then((cache) => {
+//             return cache.addAll([
+//                 '/',
+//                 '/Signin/',
+//                 '/table001/',
+//                 '/addIH0/',
+//                 '/add_Mace_Purchase/',
+//                 '/add_Mace_Dispatched/',
+//                 '/add_Mace_Dispatched_Rec/',
+//                 '/add_Final_Weigtht_Inspection/',
+//                 '/add_Vehicle_Inspection/',
+//                 '/addDISD0/',
+//                 '/add_Dispatch_Of_Dried_Nutmeg_Rec/',
+//                 '/addDISG0/',
+//                 '/add_Dispatch_Of_Green_Nutmeg_Rec/',
+//                 '/addCRK0/',
+//                 '/addFLT0/',
+//                 '/addPKG0/',
+//                 '/viewIH0/',
+//                 '/view_Mace_Purchase/',
+//                 '/view_Mace_Dispatched/',
+//                 '/view_Mace_Dispatched_Rec/',
+//                 '/view_Final_Weigtht_Inspection/',
+//                 '/view_Vehicle_Inspection/',
+//                 '/viewDISD0/',
+//                 '/view_Dispatch_Of_Dried_Nutmeg_Rec/',
+//                 '/viewDISG0/',
+//                 '/view_Dispatch_Of_Green_Nutmeg_Rec/',
+//                 '/viewCRK0/',
+//                 '/viewFLT0/',
+//                 '/viewPKG0/',
+//                 '/api/DriedA/',
+//                 '/api/DriedB/',
+//                 '/api/FloatA/',
+//                 '/api/FloatB/',
+//                 '/api/Farmer/',
+//                 '/api/Quaility/',
+//                 '/api/In-House-Drying/',
+//                 '/api/Dispatch-Of-Dried-Nutmeg/',
+//                 '/api/Dispatch-Of-Green/',
+//                 '/api/Cracking-Summary/',
+//                 '/api/Floation-Summary/',
+//                 '/api/Package-Ciontrol/',
+//                 '/api/Editors/',
+//                 '/api/Labour-support/',
+//                 '/api/Training-support/',
+//                 '/api/Policy/'
+//             ]).then(() => {
+//                 // Notify all clients that caching is complete
+//                 self.clients.matchAll().then(clients => {
+//                     clients.forEach(client => client.postMessage('Caching complete!'));
+//                 });
+//             });
+//         })
+//     );
+// });
+
+// self.addEventListener('fetch', (event) => {
+//     event.respondWith(
+//         fetch(event.request).catch(() => {
+//             return caches.match(event.request);
+//         })
+//     );
+// });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+const CACHE_NAME = 'gcna-offline-access-v2'; // Change the version number here
+
+console.log('Triggered');
+
 self.addEventListener('install', (event) => {
     event.waitUntil(
-        caches.open('gcna-offline-access').then((cache) => {
+        caches.open(CACHE_NAME).then((cache) => {
             return cache.addAll([
                 '/',
-                '/Signin/',
+                '/gcna00_1/',
+                '/gcna00_2/',
+                '/gcna00_3/',
+                '/gcna00_4/',
+                '/gcna00_5/',
+                '/gcna00_6/',
+                '/gcna00_7/',
+                '/gcna00_8/',
+                '/gcna00_9/',
+                '/gcna00_10/',
+                '/gcna00_11/',
+                '/gcna00_12/',
+                '/gcna00_13/',
+                '/gcna00_14/',
+                '/gcna00_15/',
+                '/gcna00_16/',
+                '/gcna00_17/',
+                '/gcna00_18/',
+                '/gcna00_19/',
+                '/gcna00_20/',
+                '/gcna00_21/',
+                '/gcna00_22/',
+                '/gcna00_23/',
+                '/gcna00_24/',
+                '/Signin/',  
+                '/table1/',
                 '/table001/',
-                '/addIH0/',
-                '/add_Mace_Purchase/',
-                '/add_Mace_Dispatched/',
-                '/add_Mace_Dispatched_Rec/',
-                '/add_Final_Weigtht_Inspection/',
-                '/add_Vehicle_Inspection/',
-                '/addDISD0/',
-                '/add_Dispatch_Of_Dried_Nutmeg_Rec/',
-                '/addDISG0/',
-                '/add_Dispatch_Of_Green_Nutmeg_Rec/',
-                '/addCRK0/',
-                '/addFLT0/',
-                '/addPKG0/',
-                '/viewIH0/',
-                '/view_Mace_Purchase/',
-                '/view_Mace_Dispatched/',
-                '/view_Mace_Dispatched_Rec/',
-                '/view_Final_Weigtht_Inspection/',
-                '/view_Vehicle_Inspection/',
-                '/viewDISD0/',
-                '/view_Dispatch_Of_Dried_Nutmeg_Rec/',
-                '/viewDISG0/',
-                '/view_Dispatch_Of_Green_Nutmeg_Rec/',
-                '/viewCRK0/',
-                '/viewFLT0/',
-                '/viewPKG0/',
-                '/api/DriedA/',
-                '/api/DriedB/',
-                '/api/FloatA/',
-                '/api/FloatB/',
-                '/api/Farmer/',
-                '/api/Quaility/',
-                '/api/In-House-Drying/',
-                '/api/Dispatch-Of-Dried-Nutmeg/',
-                '/api/Dispatch-Of-Green/',
-                '/api/Cracking-Summary/',
-                '/api/Floation-Summary/',
-                '/api/Package-Ciontrol/',
-                '/api/Editors/',
-                '/api/Labour-support/',
-                '/api/Training-support/',
-                '/api/Policy/'
+                '/table/',    
+                '/view_Visit/',
+                '/view_tablet/',
+                '/view_tablet2/'
             ]).then(() => {
-                // Notify all clients that caching is complete
+                // Once all resources are cached, post a message to all clients
                 self.clients.matchAll().then(clients => {
                     clients.forEach(client => client.postMessage('Caching complete!'));
                 });
@@ -781,10 +854,38 @@ self.addEventListener('install', (event) => {
     );
 });
 
+self.addEventListener('activate', (event) => {
+    const cacheWhitelist = [CACHE_NAME];
+    event.waitUntil(
+        caches.keys().then((cacheNames) => {
+            return Promise.all(
+                cacheNames.map((cacheName) => {
+                    if (!cacheWhitelist.includes(cacheName)) {
+                        console.log(`Deleting old cache: ${cacheName}`);
+                        return caches.delete(cacheName);
+                    }
+                })
+            );
+        }).then(() => {
+            return self.clients.claim();
+        })
+    );
+});
+
 self.addEventListener('fetch', (event) => {
     event.respondWith(
-        fetch(event.request).catch(() => {
-            return caches.match(event.request);
+        caches.match(event.request).then((cachedResponse) => {
+            const fetchPromise = fetch(event.request).then((networkResponse) => {
+                return caches.open(CACHE_NAME).then((cache) => {
+                    cache.put(event.request, networkResponse.clone());
+                    return networkResponse;
+                });
+            }).catch(() => {
+                // If the fetch fails (e.g., due to no network), return the cached response if available
+                return cachedResponse;
+            });
+            // Return the cached response immediately if available, otherwise wait for the network response
+            return cachedResponse || fetchPromise;
         })
     );
 });
