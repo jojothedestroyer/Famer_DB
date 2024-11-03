@@ -22,34 +22,34 @@
             });
     }
 </script> {% endcomment %} -->
-<!-- <script>
-  {% comment %} // Check if the service worker is available in the browser
-  if ('serviceWorker' in navigator) {
-      // Register the service worker
-      navigator.serviceWorker.register('/static/js/serviceworker.js')
-          .then(function (registration) {
-              console.log('Service Worker registered with scope:', registration.scope);
-          })
-          .catch(function (error) {
-              console.error('Service Worker registration failed:', error);
-          });
+ <script>
+//   {% comment %} // Check if the service worker is available in the browser
+//   if ('serviceWorker' in navigator) {
+//       // Register the service worker
+//       navigator.serviceWorker.register('/static/js/serviceworker.js')
+//           .then(function (registration) {
+//               console.log('Service Worker registered with scope:', registration.scope);
+//           })
+//           .catch(function (error) {
+//               console.error('Service Worker registration failed:', error);
+//           });
 
-      // Add a click event listener to the refresh cache button
-      document.getElementById('refresh-cache-button').addEventListener('click', function () {
-          // Send a message to the service worker to trigger cache refresh6
-          navigator.serviceWorker.controller.postMessage({ action: 'refreshCache' });
-      });
-  }
+//       // Add a click event listener to the refresh cache button
+//       document.getElementById('refresh-cache-button').addEventListener('click', function () {
+//           // Send a message to the service worker to trigger cache refresh6
+//           navigator.serviceWorker.controller.postMessage({ action: 'refreshCache' });
+//       });
+//   }
 
 
 
-  navigator.serviceWorker.addEventListener('message', (event) => {
-    if (event.data === 'Caching complete!') {
-        // Display the message to the user
-        console.log(event.data);
-        // You can replace the console.log with code to update your UI
-    }
-}); {% endcomment %}
+//   navigator.serviceWorker.addEventListener('message', (event) => {
+//     if (event.data === 'Caching complete!') {
+//         // Display the message to the user
+//         console.log(event.data);
+//         // You can replace the console.log with code to update your UI
+//     }
+// }); {% endcomment %}
 
 
 
@@ -113,7 +113,8 @@ navigator.serviceWorker.addEventListener('message', (event) => {
 
 
 </script> 
- -->
+
+	  
 <!-- 
 <script>
     const modelNames = ['Worker', 'Farmer', 'DriedA', 'DriedB', 'FloatA', 'FloatB', 'Quaility', 'visit', 'In-House-Drying', 'Dispatch-Of-Dried-Nutmeg', 'Dispatch-Of-Green', 'Cracking-Summary', 'Floation-Summary', 'Package-Ciontrol', 'Editors', 'Labour-support', 'Training-support', 'land-info', 'Land-Tenur', 'Nutmeg-Trees', 'Nutmeg-Variety', 'Other-Crops', 'Coconut-Trees', 'Citrus-Mango-Trees', 'Other-Spices-Trees', 'Other-Seasoning-Trees', 'Other-Crops-Cultivated', 'Condition', 'Nutmeg-Land', 'Nutmeg-Frequency', 'Potential-Risks', 'Road-Access', 'Food-Safety-and-Quality', 'Farm-Water-Source', 'Farm-House', 'inspector-symmary', 'Policy','Sanitation-A','Sanitation-B','Sanitation-C','Cracking_Schedule','Assorting_Log', 'Extractor_Log', 'Fumigation_Log','Shelves','W_Shelves','M_Shelves','W_Shelves_Dried','M_Shelves_Dried','Vehicle_Inspection','Final_Weight_Inspection','Final_Weight_Inspection_fields','Dispatch_Of_Dried_Nutmeg_Rec','Dispatch_Of_Green_Nutmeg_Rec','Mace_Dispatched','Mace_Purchase','Mace_Dispatched_Rec'];
@@ -398,11 +399,11 @@ self.addEventListener('fetch', (event) => {
 </script>
  -->
 <script>
-    // const modelNames = ['Worker', 'Farmer', 'DriedA', 'DriedB', 'FloatA', 'FloatB', 'Quaility', 'visit', 'In-House-Drying', 'Dispatch-Of-Dried-Nutmeg', 'Dispatch-Of-Green', 'Cracking-Summary', 'Floation-Summary', 'Package-Ciontrol', 'Editors', 'Labour-support', 'Training-support', 'land-info', 'Land-Tenur', 'Nutmeg-Trees', 'Nutmeg-Variety', 'Other-Crops', 'Coconut-Trees', 'Citrus-Mango-Trees', 'Other-Spices-Trees', 'Other-Seasoning-Trees', 'Other-Crops-Cultivated', 'Condition', 'Nutmeg-Land', 'Nutmeg-Frequency', 'Potential-Risks', 'Road-Access', 'Food-Safety-and-Quality', 'Farm-Water-Source', 'Farm-House', 'inspector-symmary', 'Policy','Sanitation-A','Sanitation-B','Sanitation-C','Cracking_Schedule','Assorting_Log', 'Extractor_Log', 'Fumigation_Log','Shelves','W_Shelves','M_Shelves','W_Shelves_Dried','M_Shelves_Dried','Vehicle_Inspection','Final_Weight_Inspection','Final_Weight_Inspection_fields','Dispatch_Of_Dried_Nutmeg_Rec','Dispatch_Of_Green_Nutmeg_Rec','Mace_Dispatched','Mace_Purchase','Mace_Dispatched_Rec'];
-        var modelNames = ['Worker', 'Farmer', 'DriedA', 'DriedB', 'FloatA', 'FloatB', 'Quaility', 'visit', 'In-House-Drying', 'Dispatch-Of-Dried-Nutmeg', 'Dispatch-Of-Green', 'Cracking-Summary', 'Floation-Summary', 'Package-Ciontrol', 'Editors', 'Labour-support', 'Training-support', 'land-info', 'Land-Tenur', 'Nutmeg-Trees', 'Nutmeg-Variety', 'Other-Crops', 'Coconut-Trees', 'Citrus-Mango-Trees', 'Other-Spices-Trees', 'Other-Seasoning-Trees', 'Other-Crops-Cultivated', 'Condition', 'Nutmeg-Land', 'Nutmeg-Frequency', 'Potential-Risks', 'Road-Access', 'Food-Safety-and-Quality', 'Farm-Water-Source', 'Farm-House', 'inspector-symmary', 'Policy','Sanitation-A','Sanitation-B','Sanitation-C','Cracking_Schedule','Assorting_Log',
-        'Extractor_Log',
-        'Fumigation_Log','Shelves','W_Shelves','M_Shelves','W_Shelves_Dried','M_Shelves_Dried','Vehicle_Inspection','Final_Weight_Inspection','Final_Weight_Inspection_fields','Dispatch_Of_Dried_Nutmeg_Rec','Dispatch_Of_Green_Nutmeg_Rec','Cracking_Extraction_Summary'];
-    function deleteDatabase(dbName) {
+    const modelNames = ['Worker', 'Farmer', 'DriedA', 'DriedB', 'FloatA', 'FloatB', 'Quaility', 'visit', 'In-House-Drying', 'Dispatch-Of-Dried-Nutmeg', 'Dispatch-Of-Green', 'Cracking-Summary', 'Floation-Summary', 'Package-Ciontrol', 'Editors', 'Labour-support', 'Training-support', 'land-info', 'Land-Tenur', 'Nutmeg-Trees', 'Nutmeg-Variety', 'Other-Crops', 'Coconut-Trees', 'Citrus-Mango-Trees', 'Other-Spices-Trees', 'Other-Seasoning-Trees', 'Other-Crops-Cultivated', 'Condition', 'Nutmeg-Land', 'Nutmeg-Frequency', 'Potential-Risks', 'Road-Access', 'Food-Safety-and-Quality', 'Farm-Water-Source', 'Farm-House', 'inspector-symmary', 'Policy','Sanitation-A','Sanitation-B','Sanitation-C','Cracking_Schedule','Assorting_Log', 'Extractor_Log', 'Fumigation_Log','Shelves','W_Shelves','M_Shelves','W_Shelves_Dried','M_Shelves_Dried','Vehicle_Inspection','Final_Weight_Inspection','Final_Weight_Inspection_fields','Dispatch_Of_Dried_Nutmeg_Rec','Dispatch_Of_Green_Nutmeg_Rec','Mace_Dispatched','Mace_Purchase','Mace_Dispatched_Rec'];
+    //     var modelNames = ['Worker', 'Farmer', 'DriedA', 'DriedB', 'FloatA', 'FloatB', 'Quaility', 'visit', 'In-House-Drying', 'Dispatch-Of-Dried-Nutmeg', 'Dispatch-Of-Green', 'Cracking-Summary', 'Floation-Summary', 'Package-Ciontrol', 'Editors', 'Labour-support', 'Training-support', 'land-info', 'Land-Tenur', 'Nutmeg-Trees', 'Nutmeg-Variety', 'Other-Crops', 'Coconut-Trees', 'Citrus-Mango-Trees', 'Other-Spices-Trees', 'Other-Seasoning-Trees', 'Other-Crops-Cultivated', 'Condition', 'Nutmeg-Land', 'Nutmeg-Frequency', 'Potential-Risks', 'Road-Access', 'Food-Safety-and-Quality', 'Farm-Water-Source', 'Farm-House', 'inspector-symmary', 'Policy','Sanitation-A','Sanitation-B','Sanitation-C','Cracking_Schedule','Assorting_Log',
+    //     'Extractor_Log',
+    //     'Fumigation_Log','Shelves','W_Shelves','M_Shelves','W_Shelves_Dried','M_Shelves_Dried','Vehicle_Inspection','Final_Weight_Inspection','Final_Weight_Inspection_fields','Dispatch_Of_Dried_Nutmeg_Rec','Dispatch_Of_Green_Nutmeg_Rec','Cracking_Extraction_Summary'];
+  function deleteDatabase(dbName) {
         return new Promise((resolve, reject) => {
             const request = indexedDB.deleteDatabase(dbName);
             request.onsuccess = function () {
@@ -500,7 +501,7 @@ self.addEventListener('fetch', (event) => {
         })
         .catch(error => console.error(`Error creating database "${deletedDBName}":`, error));
 </script>
-
+<!-- 
 <script>
 
 
@@ -553,7 +554,7 @@ function better_sendDataToDjango(item, modelName) {
     xhr.send(JSON.stringify({model: modelName, data: item}));
 }
 </script>
-
+ -->
 	  
 
     <!-- Required meta tags -->
