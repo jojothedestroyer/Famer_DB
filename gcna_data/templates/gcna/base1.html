@@ -10,8 +10,8 @@
 <html lang="en">
   <head>
 <link rel="manifest" href="('/static/manifest.json)">
- <script src="/static/js/true_sync.js"></script>
-<!-- <script src="/static/js/indexeddb.js"></script> 
+<!--  <script src="/static/js/true_sync.js"></script>
+<!-- <script src="/static/js/indexeddb.js"></script>  -->
  -->
 {% comment %} <script>
     if ('serviceWorker' in navigator) {
@@ -22,7 +22,7 @@
             });
     }
 </script> {% endcomment %}
-<script>
+<!-- <script>
   {% comment %} // Check if the service worker is available in the browser
   if ('serviceWorker' in navigator) {
       // Register the service worker
@@ -112,7 +112,7 @@ navigator.serviceWorker.addEventListener('message', (event) => {
 });
 
 
-</script> 
+</script>  -->
 
 <script>
     const modelNames =  [
